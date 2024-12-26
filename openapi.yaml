@@ -20,22 +20,22 @@ servers:
   - url: https://trao-judge-backend.trap.show/v0
     description: production server
 paths:
-  '/editorials/{editorialId}':
+  "/editorials/{editorialId}":
     parameters:
-      - $ref: '#/components/parameters/editorialIdInPath'
+      - $ref: "#/components/parameters/editorialIdInPath"
     get:
       summary: getEditorial
       operationId: getEditorial
       tags:
         - editorials
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Editorial'
-        '404':
+                $ref: "#/components/schemas/Editorial"
+        "404":
           description: 解説が存在しません(または解説の閲覧権限がありません)
       description: 個別の解説を取得する
     put:
@@ -47,17 +47,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PutEditorialRequest'
+              $ref: "#/components/schemas/PutEditorialRequest"
       responses:
-        '204':
+        "204":
           description: 正常に変更されました
-        '400':
+        "400":
           description: Bad Request
-        '403':
+        "403":
           description: |-
             Forbidden
             解説を変更する権限がありません.
-        '404':
+        "404":
           description: |-
             Not Found
             解説が存在しません. (または解説の閲覧権限がありません.)
@@ -68,34 +68,34 @@ paths:
       tags:
         - editorials
       responses:
-        '204':
+        "204":
           description: 正常に削除されました.
-        '403':
+        "403":
           description: |-
             Forbidden
             解説を削除する権限がありません.
-        '404':
+        "404":
           description: |-
             Not Found
             解説が存在しません. (または解説の閲覧権限がありません.)
       description: 個別の解説を削除する
-  '/testcases/{testcaseId}':
+  "/testcases/{testcaseId}":
     parameters:
-      - $ref: '#/components/parameters/testcaseIdInPath'
+      - $ref: "#/components/parameters/testcaseIdInPath"
     get:
       summary: getTestcase
       tags:
         - testcases
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Testcase'
-        '400':
+                $ref: "#/components/schemas/Testcase"
+        "400":
           description: Bad Request
-        '404':
+        "404":
           description: Not Found
       operationId: getTestcase
       description: あるidのテストケースを取得
@@ -103,14 +103,14 @@ paths:
       summary: putTestcase
       operationId: putTestcase
       responses:
-        '204':
+        "204":
           description: 正常に変更されました
           content: {}
-        '400':
+        "400":
           description: Bad Request
-        '403':
+        "403":
           description: Forbidden
-        '404':
+        "404":
           description: Not Found
       description: 単体のテストケースの編集
       requestBody:
@@ -118,18 +118,18 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PutTestcaseRequest'
+              $ref: "#/components/schemas/PutTestcaseRequest"
       tags:
         - testcases
     delete:
       summary: deleteTestcase
       operationId: deleteTestcase
       responses:
-        '204':
+        "204":
           description: 正常に削除されました
-        '403':
+        "403":
           description: Forbidden
-        '404':
+        "404":
           description: Not Found
       description: 単一のテストケースの削除
       tags:
@@ -148,57 +148,57 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PostProblemRequest'
+              $ref: "#/components/schemas/PostProblemRequest"
       responses:
-        '200':
+        "200":
           description: |-
             OK
             問題が投稿されました.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '400':
+                $ref: "#/components/schemas/Problem"
+        "400":
           description: Bad Request
     get:
       summary: getProblems
       operationId: getProblems
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProblemSummaries'
-        '400':
+                $ref: "#/components/schemas/ProblemSummaries"
+        "400":
           description: Bad Request
-        '404':
+        "404":
           description: Not Found
       description: 問題一覧を取得する
       tags:
         - problems
       parameters:
-        - $ref: '#/components/parameters/limitInQuery'
-        - $ref: '#/components/parameters/offsetInQuery'
-        - $ref: '#/components/parameters/problemsOrderByInQuery'
-        - $ref: '#/components/parameters/userNameInQuery'
-        - $ref: '#/components/parameters/userIdInQuery'
-  '/problems/{problemId}':
+        - $ref: "#/components/parameters/limitInQuery"
+        - $ref: "#/components/parameters/offsetInQuery"
+        - $ref: "#/components/parameters/problemsOrderByInQuery"
+        - $ref: "#/components/parameters/userNameInQuery"
+        - $ref: "#/components/parameters/userIdInQuery"
+  "/problems/{problemId}":
     parameters:
-      - $ref: '#/components/parameters/problemIdInPath'
+      - $ref: "#/components/parameters/problemIdInPath"
     get:
       summary: getProblem
       operationId: getProblem
       tags:
         - problems
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Problem'
-        '404':
+                $ref: "#/components/schemas/Problem"
+        "404":
           description: |-
             Not Found
             問題が存在しません. (または問題の閲覧権限がありません.)
@@ -209,16 +209,16 @@ paths:
       tags:
         - problems
       responses:
-        '204':
+        "204":
           description: 正常に変更されました
           content: {}
-        '400':
+        "400":
           description: Bad Request
-        '403':
+        "403":
           description: |-
             Forbidden
             問題を編集する権限がありません.
-        '404':
+        "404":
           description: |-
             Not Found
             問題が存在しません. (または問題の閲覧権限がありません.)
@@ -227,40 +227,40 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PutProblemRequest'
+              $ref: "#/components/schemas/PutProblemRequest"
     delete:
       summary: deleteProblem
       operationId: deleteProblem
       tags:
         - problems
       responses:
-        '204':
+        "204":
           description: 正常に削除されました.
-        '403':
+        "403":
           description: |-
             Forbidden
             問題を削除する権限がありません.
-        '404':
+        "404":
           description: |-
             Not Found
             問題が存在しません. (または問題の閲覧権限がありません.)
       description: 問題を削除する
-  '/problems/{problemId}/editorials':
+  "/problems/{problemId}/editorials":
     parameters:
-      - $ref: '#/components/parameters/problemIdInPath'
+      - $ref: "#/components/parameters/problemIdInPath"
     get:
       summary: getEditorialsOnProblem
       operationId: getEditorialsOnProblem
       tags:
         - editorials
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EditorialSummaries'
-        '404':
+                $ref: "#/components/schemas/EditorialSummaries"
+        "404":
           description: |-
             Not Found
             問題が存在しません. (または問題の閲覧権限がありません.)
@@ -274,28 +274,28 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PostEditorialRequest'
+              $ref: "#/components/schemas/PostEditorialRequest"
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Editorial'
-        '400':
+                $ref: "#/components/schemas/Editorial"
+        "400":
           description: Bad Request
-        '403':
+        "403":
           description: |-
             Forbidden
             解説を投稿する権限がありません.
-        '404':
+        "404":
           description: |-
             Not Found
             問題が存在しません. (または問題の閲覧権限がありません.)
       description: 解説を投稿する
-  '/problems/{problemId}/testcases':
+  "/problems/{problemId}/testcases":
     parameters:
-      - $ref: '#/components/parameters/problemIdInPath'
+      - $ref: "#/components/parameters/problemIdInPath"
     post:
       summary: postTestcases
       operationId: postTestcases
@@ -305,21 +305,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PostTestcaseRequest'
+              $ref: "#/components/schemas/PostTestcaseRequest"
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TestcaseSummaries'
-        '400':
+                $ref: "#/components/schemas/TestcaseSummaries"
+        "400":
           description: Bad Request
-        '403':
+        "403":
           description: |-
             Forbidden
             解説を投稿する権限がありません.
-        '404':
+        "404":
           description: |-
             Not Found
             問題が存在しません. (または問題の閲覧権限がありません.)
@@ -328,18 +328,18 @@ paths:
       summary: getTestcases
       operationId: getTestcases
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TestcaseSummaries'
-        '404':
+                $ref: "#/components/schemas/TestcaseSummaries"
+        "404":
           description: Not Found
       description: 全てのテストケースを取得
       tags:
         - testcases
-  '/problems/{problemId}/submissions':
+  "/problems/{problemId}/submissions":
     parameters:
       - name: problemId
         in: path
@@ -356,21 +356,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PostSubmissionRequest'
+              $ref: "#/components/schemas/PostSubmissionRequest"
       responses:
-        '201':
+        "201":
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Submission'
-        '400':
+                $ref: "#/components/schemas/Submission"
+        "400":
           description: Bad Request
-        '403':
+        "403":
           description: |-
             Forbidden
             ソースコードを提出する権限がありません.
-        '404':
+        "404":
           description: |-
             Not Found
             提出が存在しません. (または提出の閲覧権限がありません.)
@@ -381,63 +381,63 @@ paths:
       tags:
         - submissions
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubmissionSummaries'
-        '400':
+                $ref: "#/components/schemas/SubmissionSummaries"
+        "400":
           description: Bad Request
-        '404':
+        "404":
           description: Not Found
       operationId: getSubmissions
       parameters:
-        - $ref: '#/components/parameters/submissionsOrderByInQuery'
-        - $ref: '#/components/parameters/judgeStatusInQuery'
-        - $ref: '#/components/parameters/codeLanguageInQuery'
-        - $ref: '#/components/parameters/userNameInQuery'
-        - $ref: '#/components/parameters/userIdInQuery'
-        - $ref: '#/components/parameters/limitInQuery'
-        - $ref: '#/components/parameters/offsetInQuery'
-        - $ref: '#/components/parameters/problemIdInQuery'
+        - $ref: "#/components/parameters/submissionsOrderByInQuery"
+        - $ref: "#/components/parameters/judgeStatusInQuery"
+        - $ref: "#/components/parameters/codeLanguageInQuery"
+        - $ref: "#/components/parameters/userNameInQuery"
+        - $ref: "#/components/parameters/userIdInQuery"
+        - $ref: "#/components/parameters/limitInQuery"
+        - $ref: "#/components/parameters/offsetInQuery"
+        - $ref: "#/components/parameters/problemIdInQuery"
       description: 全ての提出を取得
-  '/submissions/{submissionId}':
+  "/submissions/{submissionId}":
     parameters:
-      - $ref: '#/components/parameters/submissionIdInPath'
+      - $ref: "#/components/parameters/submissionIdInPath"
     get:
       summary: getSubmission
       operationId: getSubmission
       tags:
         - submissions
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Submission'
-        '404':
+                $ref: "#/components/schemas/Submission"
+        "404":
           description: |-
             Not Found
             提出が存在しません. (または提出の閲覧権限がありません.)
       description: 個別の提出を取得する
-  '/users/{userId}':
+  "/users/{userId}":
     parameters:
-      - $ref: '#/components/parameters/userIdInPath'
+      - $ref: "#/components/parameters/userIdInPath"
     get:
       summary: getUser
       operationId: getUser
       tags:
         - users
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-        '404':
+                $ref: "#/components/schemas/User"
+        "404":
           description: |-
             Not Found
             ユーザーが存在しません.
@@ -449,13 +449,13 @@ paths:
       tags:
         - me
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-        '401':
+                $ref: "#/components/schemas/User"
+        "401":
           description: |-
             Unauthorized
             ログインしていません.
@@ -464,13 +464,13 @@ paths:
       summary: putMe
       operationId: putUsersMeIcon
       responses:
-        '200':
+        "200":
           description: 正常に更新されました
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-        '400':
+                $ref: "#/components/schemas/User"
+        "400":
           description: 不正なリクエストです
       tags:
         - me
@@ -478,16 +478,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PutMeRequest'
+              $ref: "#/components/schemas/PutMeRequest"
       description: アイコンなど自身に関連する情報の編集をします
   /users/me/email:
     put:
       summary: putMeEmail
       operationId: putMeEmail
       responses:
-        '204':
+        "204":
           description: 正常に更新されました　メール認証を行なってください
-        '400':
+        "400":
           description: 不正なリクエストです
       tags:
         - me
@@ -495,16 +495,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Email'
+              $ref: "#/components/schemas/Email"
       description: メール情報を書き換える メール情報を書き換えた後はメール認証が必要である
   /users/me/password:
     put:
       summary: putUserMePassword
       operationId: putUsersMePassword
       responses:
-        '204':
+        "204":
           description: 正常に更新されました
-        '400':
+        "400":
           description: 不正なリクエストです
       tags:
         - me
@@ -512,22 +512,22 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PutPasswordRequest'
+              $ref: "#/components/schemas/PutPasswordRequest"
       description: ログイン後にパスワードを変更する
   /signup/request:
     post:
       summary: postSignupRequest
       operationId: postSignupRequest
       responses:
-        '201':
+        "201":
           description: 認証用のURLを送信しました　メール認証を行なってください
-        '400':
+        "400":
           description: 不正なリクエストです　メールアドレスの形式を確認してください
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SignupRequest'
+              $ref: "#/components/schemas/SignupRequest"
       tags:
         - authentication
       description: メールアドレスを渡し，そこに認証用のリンクを送る。
@@ -536,17 +536,17 @@ paths:
       summary: postSignup
       operationId: postSignup
       responses:
-        '201':
+        "201":
           description: 正常にユーザーを作成できました　メール認証を行なってください
-        '400':
+        "400":
           description: 不正なリクエストです
-        '401':
+        "401":
           description: Unauthorized
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Signup'
+              $ref: "#/components/schemas/Signup"
       tags:
         - authentication
       description: |-
@@ -555,17 +555,17 @@ paths:
         リクエストを受け取ったら`/activate?payload=JWT`のような形式のメール有効化用エンドポイントを含むメールをバックエンドからユーザーに送る。
         ユーザーがそのアドレスをクリックしたら，メール有効化処理をし，適切に終了したらログイン画面にリダイレクトする。
       parameters:
-        - $ref: '#/components/parameters/JWTWithoutUserId'
+        - $ref: "#/components/parameters/JWTWithoutUserId"
   /login:
     post:
       summary: postLogin
       operationId: postLogin
       responses:
-        '204':
+        "204":
           description: No Content
-        '400':
+        "400":
           description: 不正なリクエストです　ユーザー名とパスワードを確認してください
-        '401':
+        "401":
           description: Unauthorized
       tags:
         - authentication
@@ -573,14 +573,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserEmailAndPassword'
+              $ref: "#/components/schemas/UserEmailAndPassword"
       description: ログイン
   /logout:
     post:
       summary: postLogout
       operationId: postLogout
       responses:
-        '204':
+        "204":
           description: No Content
       description: ログアウト
       tags:
@@ -591,7 +591,7 @@ paths:
       tags:
         - authentication
       responses:
-        '204':
+        "204":
           description: 正常にリセットメールを送信しました
       operationId: postRequestResetPassword
       description: |-
@@ -602,38 +602,38 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Email'
+              $ref: "#/components/schemas/Email"
   /reset-password:
     post:
       summary: postResetPassword
       operationId: postResetPassword
       responses:
-        '204':
+        "204":
           description: 正常に更新されました
       description: 新しいパスワードをPOSTする
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ResetPasswordRequest'
+              $ref: "#/components/schemas/ResetPasswordRequest"
       tags:
         - authentication
       parameters:
-        - $ref: '#/components/parameters/JWTWithUserId'
+        - $ref: "#/components/parameters/JWTWithUserId"
   /activate:
     get:
       summary: getActivateEmailAddress
       parameters:
-        - $ref: '#/components/parameters/JWTWithUserId'
-        - $ref: '#/components/parameters/JWTWithoutUserId'
+        - $ref: "#/components/parameters/JWTWithUserId"
+        - $ref: "#/components/parameters/JWTWithoutUserId"
       responses:
-        '200':
+        "200":
           description: メールアドレスが正常に有効化されました
-        '400':
+        "400":
           description: Invalid token or bad request
-        '401':
+        "401":
           description: Unauthorized or expired token
-        '404':
+        "404":
           description: User not found
       operationId: getActivate
       description: メールアドレスの有効化
@@ -644,7 +644,7 @@ paths:
       summary: getGoogleOAuth2Params
       operationId: getGoogleAuthParams
       responses:
-        '200':
+        "200":
           description: 正しいURLが返されました
           content:
             application/json:
@@ -655,7 +655,7 @@ paths:
                     type: string
                 required:
                   - url
-        '500':
+        "500":
           description: Internal server error
           content:
             application/json:
@@ -673,7 +673,7 @@ paths:
       summary: getGithubOAuth2Params
       operationId: getgithubAuthParams
       responses:
-        '200':
+        "200":
           description: 正しいURLが返されました
           content:
             application/json:
@@ -684,7 +684,7 @@ paths:
                     type: string
                 required:
                   - url
-        '500':
+        "500":
           description: Internal server error
           content:
             application/json:
@@ -717,10 +717,10 @@ paths:
               required:
                 - token
       responses:
-        '201':
+        "201":
           description: トークンは正常に削除されました
           content: {}
-        '400':
+        "400":
           description: Invalid request or token
           content:
             application/json:
@@ -730,7 +730,7 @@ paths:
                   message:
                     type: string
                     example: Invalid token or request
-        '500':
+        "500":
           description: Internal server error
           content:
             application/json:
@@ -760,10 +760,10 @@ paths:
               required:
                 - token
       responses:
-        '201':
+        "201":
           description: トークンは正常に削除されました
           content: {}
-        '400':
+        "400":
           description: Invalid request or token
           content:
             application/json:
@@ -773,7 +773,7 @@ paths:
                   message:
                     type: string
                     example: Invalid token or request
-        '500':
+        "500":
           description: Internal server error
           content:
             application/json:
@@ -803,10 +803,10 @@ paths:
               required:
                 - token
       responses:
-        '201':
+        "201":
           description: トークンは正常に削除されました
           content: {}
-        '400':
+        "400":
           description: Invalid request or token
           content:
             application/json:
@@ -816,7 +816,7 @@ paths:
                   message:
                     type: string
                     example: Invalid token or request
-        '500':
+        "500":
           description: Internal server error
           content:
             application/json:
@@ -832,17 +832,17 @@ paths:
       tags:
         - language
       responses:
-        '200':
+        "200":
           description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Language'
-        '400':
+                  $ref: "#/components/schemas/Language"
+        "400":
           description: Bad Request
-        '404':
+        "404":
           description: Not Found
       operationId: getLanguages
       description: 使用できる言語の一覧
@@ -886,7 +886,7 @@ components:
         testcases:
           type: array
           items:
-            $ref: '#/components/schemas/TestcaseSummaries'
+            $ref: "#/components/schemas/TestcaseSummaries"
         createdAt:
           type: string
           format: date-time
@@ -964,7 +964,7 @@ components:
         problems:
           type: array
           items:
-            $ref: '#/components/schemas/ProblemSummary'
+            $ref: "#/components/schemas/ProblemSummary"
       required:
         - total
         - problems
@@ -1047,9 +1047,9 @@ components:
         iconUrl:
           type: string
         postProblems:
-          $ref: '#/components/schemas/ProblemSummaries'
+          $ref: "#/components/schemas/ProblemSummaries"
         submitProblems:
-          $ref: '#/components/schemas/SubmissionSummaries'
+          $ref: "#/components/schemas/SubmissionSummaries"
         xLink:
           type: string
         githubLink:
@@ -1057,7 +1057,7 @@ components:
         selfIntroduction:
           type: string
         role:
-          $ref: '#/components/schemas/Role'
+          $ref: "#/components/schemas/Role"
         createdAt:
           type: string
           format: date-time
@@ -1134,7 +1134,7 @@ components:
         codeLength:
           type: number
         judgeStatus:
-          $ref: '#/components/schemas/JudgeStatus'
+          $ref: "#/components/schemas/JudgeStatus"
       required:
         - id
         - problemId
@@ -1154,10 +1154,10 @@ components:
       properties:
         total:
           type: integer
-        submissions:
+        problems:
           type: array
           items:
-            $ref: '#/components/schemas/SubmissionSummary'
+            $ref: "#/components/schemas/SubmissionSummary"
     Submission:
       title: Submission
       type: object
@@ -1193,11 +1193,11 @@ components:
         codeLength:
           type: number
         overallJudgeStatus:
-          $ref: '#/components/schemas/JudgeStatus'
+          $ref: "#/components/schemas/JudgeStatus"
         judgeResults:
           type: array
           items:
-            $ref: '#/components/schemas/JudgeResult'
+            $ref: "#/components/schemas/JudgeResult"
       required:
         - id
         - userId
@@ -1235,9 +1235,6 @@ components:
           description: 更新日時
           type: string
           format: date-time
-        problemId:
-          description: 問題ID
-          type: integer
         authorId:
           description: 投稿者のユーザーID
           type: integer
@@ -1253,7 +1250,7 @@ components:
       description: 解説一覧
       type: array
       items:
-        $ref: '#/components/schemas/EditorialSummary'
+        $ref: "#/components/schemas/EditorialSummary"
     Editorial:
       title: Editorial
       description: 解説の詳細
@@ -1270,9 +1267,6 @@ components:
           description: 更新日時
           type: string
           format: date-time
-        problemId:
-          description: 問題ID
-          type: integer
         authorId:
           description: 投稿者のユーザーID
           type: integer
@@ -1289,7 +1283,6 @@ components:
       required:
         - id
         - createdAt
-        - problemId
         - authorId
         - statement
         - isPublic
@@ -1380,7 +1373,7 @@ components:
       required:
         - password
         - token
-      description: ''
+      description: ""
     JudgeStatus:
       title: JudgeStatus
       description: |-
@@ -1414,7 +1407,7 @@ components:
         testcaseName:
           type: string
         judgeStatus:
-          $ref: '#/components/schemas/JudgeStatus'
+          $ref: "#/components/schemas/JudgeStatus"
         score:
           type: integer
         time:
@@ -1432,14 +1425,14 @@ components:
       description: |-
         ユーザの役割
 
-        * `admin` - admin
-        * `traPUser` - adminでないtraP部員
-        * `commonUser` - adminでない一般ユーザー(traP部員以外のユーザー)
+        * `Admin` - Admin
+        * `traPUser` - AdminでないtraP部員
+        * `CommonUser` - Adminでない一般ユーザー(traP部員以外のユーザー)
       type: string
       enum:
-        - admin
+        - Admin
         - traPUser
-        - commonUser
+        - CommonUser
     Testcase:
       title: Testcase
       type: object
@@ -1519,7 +1512,7 @@ components:
         testcaseSummaries:
           type: array
           items:
-            $ref: '#/components/schemas/TestcaseSummary'
+            $ref: "#/components/schemas/TestcaseSummary"
     Language:
       title: Language
       type: object
@@ -1627,7 +1620,7 @@ components:
       description: ジャッジ結果
       required: false
       schema:
-        $ref: '#/components/schemas/JudgeStatus'
+        $ref: "#/components/schemas/JudgeStatus"
     codeLanguageInQuery:
       name: language
       in: query
